@@ -20,6 +20,21 @@ from email_preprocess import preprocess
 ### and testing datasets, respectively
 ### labels_train and labels_test are the corresponding item labels
 features_train, features_test, labels_train, labels_test = preprocess()
+from sklearn.naive_bayes import GaussianNB
+### create classifier
+t0 = time()
+clf = GaussianNB()
+### fit the classifier on the training features and labels
+classFit = clf.fit(features_train, labels_train)
+print "training time:", round(time()-t0, 3), "s"
+
+score = classFit.score(features_test,labels_test)
+print score
+t1 = time()
+a = classFit.predict(features_test)
+print "predicting time:", round(time()-t1, 3), "s"
+
+print a[0]
 
 
 

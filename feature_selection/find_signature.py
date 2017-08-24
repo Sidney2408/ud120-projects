@@ -13,6 +13,16 @@ authors_file = "../text_learning/your_email_authors.pkl"
 word_data = pickle.load( open(words_file, "r"))
 authors = pickle.load( open(authors_file, "r") )
 
+def featureScaling(arr):
+    xmin = min(arr)
+    xmax = max(arr)
+    bottom = xmax - xmin
+    newArr = []
+    for i in arr:
+        top = float(i - xmin)
+        print(top/bottom)
+        newArr.append(top/bottom)
+    return newArr
 
 
 ### test_size is the percentage of events assigned to the test set (the
